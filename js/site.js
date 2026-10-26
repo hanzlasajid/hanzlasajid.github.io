@@ -141,10 +141,10 @@
     const positionModeMarker = () => {
       const panelRect = currentModeLink.closest('.mode-panel').getBoundingClientRect();
       const linkRect = currentModeLink.getBoundingClientRect();
-      const markerWidth = 100;
+      const markerWidth = 124;
       const markerX = window.innerWidth <= 768
         ? Math.max(10, panelRect.right - markerWidth - 8)
-        : panelRect.right - 20;
+        : panelRect.right - 54;
       modeMarker.style.setProperty('--marker-x', `${markerX}px`);
       modeMarker.style.setProperty('--marker-y', `${linkRect.top + (linkRect.height / 2)}px`);
     };
