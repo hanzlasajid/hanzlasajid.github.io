@@ -77,9 +77,11 @@ body[data-mode="product"] .nav-links a:hover, body[data-mode="product"] .nav-lin
 .button:hover, .button:focus-visible { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
 .button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
 .button-dark { color: #fff; background: var(--dark); }
+.button-blue { color: #fff; background: var(--blue); }
 .button-red { color: #fff; background: var(--red); }
 .button-yellow { color: var(--ink); background: var(--yellow); }
-.button-dark.mask-hover { --mask-surface: var(--dark); --mask-surface-text: #fff; --mask-reveal: var(--red); --mask-reveal-text: #fff; }
+.button-dark.mask-hover { --mask-surface: var(--dark); --mask-surface-text: #fff; --mask-reveal: var(--blue); --mask-reveal-text: #fff; }
+.button-blue.mask-hover { --mask-surface: var(--blue); --mask-surface-text: #fff; --mask-reveal: var(--dark); --mask-reveal-text: #fff; }
 .button-red.mask-hover { --mask-surface: var(--red); --mask-surface-text: #fff; --mask-reveal: var(--yellow); --mask-reveal-text: var(--ink); }
 .mask-hover { position: relative; overflow: hidden; isolation: isolate; background: var(--mask-reveal); color: var(--mask-reveal-text); }
 .mask-hover::before { content: attr(data-label); position: absolute; inset: -1px; z-index: 1; padding: inherit; display: flex; align-items: center; justify-content: center; color: var(--mask-surface-text); background: var(--mask-surface); pointer-events: none; white-space: nowrap; -webkit-mask: url("../assets/urban-mask-sprite.png"); mask: url("../assets/urban-mask-sprite.png"); -webkit-mask-size: 3000% 100%; mask-size: 3000% 100%; animation: mask-cover .7s steps(29) forwards; }
@@ -201,7 +203,7 @@ input.is-invalid, textarea.is-invalid { border-color: var(--red); }
 .impact-strip > div:last-child { border-right: 0; }
 .impact-strip > div:nth-child(2) { background: var(--maroon); }
 .impact-strip > div:nth-child(3) { color: var(--ink); background: var(--mustard); }
-.impact-strip > div:nth-child(4) { color: var(--ink); background: var(--amber); }
+.impact-strip > div:nth-child(4) { color: #fff; background: var(--blue); }
 .impact-strip strong { display: block; font-size: clamp(30px, 3vw, 48px); line-height: 1; letter-spacing: -.05em; }
 .impact-strip strong.is-counting { animation: impact-number-rise .9s cubic-bezier(.15,.9,.25,1) both; }
 .impact-strip span { margin-top: 9px; font: 700 11px "Space Mono", monospace; line-height: 1.35; text-transform: uppercase; letter-spacing: .06em; }
