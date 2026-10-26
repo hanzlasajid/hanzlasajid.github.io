@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="css/site.css">
   <script src="js/site.js" defer></script>
 </head>
-<body>
+<body data-mode="quality">
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
   <header class="mobile-bar">
     <a class="mobile-brand" href="./">HS</a>
     <button class="menu-button" type="button" data-open-drawer aria-controls="site-nav" aria-expanded="false">Menu</button>
@@ -27,8 +28,9 @@
     <div class="mode-panel" aria-label="Choose portfolio mode">
       <span class="eyebrow">Viewing as</span>
       <a class="mode-link is-active" href="./" aria-current="page">SDET / QA</a>
-      <a class="mode-link" href="product/">Product Manager</a>
+      <a class="mode-link" href="product/" data-mode-switch data-destination="product">Product Manager</a>
     </div>
+    <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false"><span>Motion</span><strong data-motion-state>Full</strong></button>
     <nav class="nav-links" aria-label="Page sections">
       <a href="#approach">Approach</a>
       <a href="#experience">Experience</a>
@@ -46,18 +48,32 @@
     <section class="hero hero-quality" id="top">
       <div class="hero-copy">
         <span class="hero-badge">SDET / QUALITY ENGINEER</span>
-        <h1>Quality, engineered from requirement to release.</h1>
+        <h1>Build the product right.</h1>
+        <p class="hero-subline">With built-in quality.</p>
         <p>I build test strategy, automation and evidence that help teams ship with confidence—and I keep the user experience in the room while decisions are made.</p>
         <div class="hero-actions">
           <a class="button button-dark" href="#experience">See the work</a>
           <button class="button button-pink" type="button" data-open-contact>Start a conversation</button>
         </div>
       </div>
-      <aside class="position-card" aria-label="Portfolio positioning">
-        <span class="eyebrow">Where I work</span>
-        <p>SDET and quality engineering at the intersection of <strong>test systems</strong>, <strong>product decisions</strong> and <strong>user experience</strong>.</p>
-      </aside>
+      <div class="hero-visual hero-visual-quality">
+        <figure class="hero-portrait portrait-quality">
+          <img src="assets/hanzla-sdet.webp" width="1400" height="1050" alt="Hanzla Sajid standing beside a lake with mountains in the background" fetchpriority="high">
+          <figcaption><span>Quality mode</span><strong>Systems · Signals · Confidence</strong></figcaption>
+        </figure>
+        <aside class="position-card" aria-label="Portfolio positioning">
+          <span class="eyebrow">Where I work</span>
+          <p>SDET and quality engineering at the intersection of <strong>test systems</strong>, <strong>product decisions</strong> and <strong>user experience</strong>.</p>
+        </aside>
+      </div>
     </section>
+
+    <div class="motion-ticker" aria-label="Areas of work">
+      <div class="ticker-track">
+        <span>PLAYWRIGHT</span><i>×</i><span>TEST STRATEGY</span><i>×</i><span>USER EXPERIENCE</span><i>×</i><span>API & DATA</span><i>×</i><span>ACCESSIBILITY</span><i>×</i><span>QUALITY SIGNALS</span><i>×</i>
+        <span aria-hidden="true">PLAYWRIGHT</span><i aria-hidden="true">×</i><span aria-hidden="true">TEST STRATEGY</span><i aria-hidden="true">×</i><span aria-hidden="true">USER EXPERIENCE</span><i aria-hidden="true">×</i><span aria-hidden="true">API & DATA</span><i aria-hidden="true">×</i><span aria-hidden="true">ACCESSIBILITY</span><i aria-hidden="true">×</i><span aria-hidden="true">QUALITY SIGNALS</span><i aria-hidden="true">×</i>
+      </div>
+    </div>
 
     <section class="section" id="approach">
       <div class="section-heading">
@@ -164,7 +180,7 @@
     <section class="switch-banner">
       <span class="eyebrow">Other side of the work</span>
       <h2>See how I approach product direction.</h2>
-      <a class="button button-yellow" href="product/">Switch to Product Manager →</a>
+      <a class="button button-yellow" href="product/" data-mode-switch data-destination="product">Switch to Product Manager →</a>
     </section>
   </main>
 
