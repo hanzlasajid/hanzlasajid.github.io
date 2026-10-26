@@ -237,34 +237,21 @@
     stage.style.setProperty('--shift-direction', direction);
     stage.setAttribute('aria-hidden', 'true');
 
-    for (let index = 0; index < 4; index += 1) {
-      const echo = document.createElement('div');
-      echo.className = 'shift-echo';
-      echo.style.setProperty('--echo-index', index);
-      const pageClone = document.querySelector('.main').cloneNode(true);
-      pageClone.querySelectorAll('[id]').forEach((element) => element.removeAttribute('id'));
-      pageClone.setAttribute('inert', '');
-      pageClone.style.top = `${-window.scrollY}px`;
-      echo.append(pageClone);
-      stage.append(echo);
+    const blockColors = ['#1a1a1a', '#7f1d1d', '#b91c1c', '#f59e0b', '#eab308', '#ffd600', '#00c853'];
+    for (let index = 0; index < 12; index += 1) {
+      const block = document.createElement('div');
+      block.className = 'shift-block';
+      block.style.setProperty('--block-index', index);
+      block.style.setProperty('--block-color', blockColors[index % blockColors.length]);
+      stage.append(block);
     }
 
-    const lines = document.createElement('div');
-    lines.className = 'shift-lines';
-    const flash = document.createElement('div');
-    flash.className = 'shift-flash';
     const shiftLabel = document.createElement('div');
     shiftLabel.className = 'shift-label';
     shiftLabel.innerHTML = `<span>Portfolio mode</span>${label}<small>Same experience. Different perspective.</small>`;
-    stage.append(lines, flash, shiftLabel);
+    stage.append(shiftLabel);
     body.append(stage);
     requestAnimationFrame(() => stage.classList.add('is-active'));
-
-    try {
-      window.sessionStorage.setItem('mode-shift-arrival', '1');
-    } catch {
-      // The destination still loads if browser storage is unavailable.
-    }
     window.setTimeout(() => window.location.assign(link.href), 1360);
   };
 
@@ -275,16 +262,6 @@
       runModeShift(link);
     });
   });
-
-  try {
-    if (window.sessionStorage.getItem('mode-shift-arrival') === '1') {
-      window.sessionStorage.removeItem('mode-shift-arrival');
-      body.classList.add('shift-arrival');
-      window.setTimeout(() => body.classList.remove('shift-arrival'), 920);
-    }
-  } catch {
-    // Arrival accent is optional.
-  }
 
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
