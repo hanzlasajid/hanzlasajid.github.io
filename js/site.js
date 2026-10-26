@@ -8,28 +8,10 @@
   const form = document.querySelector('[data-contact-form]');
   const backToTop = document.querySelector('[data-back-to-top]');
   const scrollProgress = document.querySelector('[data-scroll-progress]');
-  const motionToggle = document.querySelector('[data-motion-toggle]');
-  const motionState = document.querySelector('[data-motion-state]');
   let modalOpener = null;
-  let reducedByChoice = false;
-
-  try {
-    reducedByChoice = window.localStorage.getItem('portfolio-motion') === 'reduced';
-  } catch {
-    reducedByChoice = false;
-  }
 
   const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasReducedMotion = () => reducedByChoice || prefersReducedMotion();
-
-  const applyMotionPreference = () => {
-    document.documentElement.toggleAttribute('data-motion', reducedByChoice);
-    if (reducedByChoice) document.documentElement.dataset.motion = 'reduced';
-    motionToggle?.setAttribute('aria-pressed', String(reducedByChoice));
-    if (motionState) motionState.textContent = reducedByChoice ? 'Reduced' : 'Full';
-  };
-
-  applyMotionPreference();
+  const hasReducedMotion = prefersReducedMotion;
 
   const visibleFocusable = (root) => [...root.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
     .filter((element) => element.offsetParent !== null);
@@ -42,14 +24,17 @@
   const openDrawer = () => {
     drawer.classList.add('is-open');
     drawerOverlay.classList.add('is-open');
+    body.classList.add('drawer-open');
     drawerOpen.setAttribute('aria-expanded', 'true');
     setBodyLock();
     drawerClose.focus();
+    window.requestAnimationFrame(() => document.dispatchEvent(new CustomEvent('drawerstatechange')));
   };
 
   const closeDrawer = (restoreFocus = true) => {
     drawer.classList.remove('is-open');
     drawerOverlay.classList.remove('is-open');
+    body.classList.remove('drawer-open');
     drawerOpen.setAttribute('aria-expanded', 'false');
     setBodyLock();
     if (restoreFocus) drawerOpen.focus();
@@ -116,15 +101,59 @@
   updateScrollUI();
   backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  motionToggle?.addEventListener('click', () => {
-    reducedByChoice = !reducedByChoice;
-    try {
-      window.localStorage.setItem('portfolio-motion', reducedByChoice ? 'reduced' : 'full');
-    } catch {
-      // Motion preference still applies for the current page.
-    }
-    applyMotionPreference();
+  const modeLinks = [...document.querySelectorAll('.mode-link')];
+  let activeMaskLink = null;
+  const startModeMask = (link) => {
+    modeLinks.forEach((candidate) => {
+      if (candidate === link) return;
+      candidate.classList.remove('is-mask-active', 'is-mask-resetting');
+    });
+    link.classList.remove('is-mask-active', 'is-mask-resetting');
+    void link.offsetWidth;
+    link.classList.add('is-mask-active');
+    activeMaskLink = link;
+  };
+  const resetModeMask = (link) => {
+    if (activeMaskLink !== link) return;
+    link.classList.remove('is-mask-active');
+    void link.offsetWidth;
+    link.classList.add('is-mask-resetting');
+    activeMaskLink = null;
+  };
+
+  modeLinks.forEach((link) => {
+    link.addEventListener('pointerenter', () => startModeMask(link));
+    link.addEventListener('pointerleave', () => resetModeMask(link));
+    link.addEventListener('focus', () => startModeMask(link));
+    link.addEventListener('blur', () => resetModeMask(link));
+    link.addEventListener('animationend', () => {
+      if (link.classList.contains('is-mask-resetting')) link.classList.remove('is-mask-resetting');
+    });
   });
+
+  const currentModeLink = document.querySelector('.mode-link.is-active');
+  if (currentModeLink) {
+    const modeMarker = document.createElement('div');
+    modeMarker.className = 'mode-marker';
+    modeMarker.setAttribute('aria-hidden', 'true');
+    modeMarker.innerHTML = '<b>←</b><span>You are here</span>';
+    body.append(modeMarker);
+    const positionModeMarker = () => {
+      const panelRect = currentModeLink.closest('.mode-panel').getBoundingClientRect();
+      const linkRect = currentModeLink.getBoundingClientRect();
+      const markerWidth = 100;
+      const markerX = window.innerWidth <= 768
+        ? Math.max(10, panelRect.right - markerWidth - 8)
+        : panelRect.right - 20;
+      modeMarker.style.setProperty('--marker-x', `${markerX}px`);
+      modeMarker.style.setProperty('--marker-y', `${linkRect.top + (linkRect.height / 2)}px`);
+    };
+    positionModeMarker();
+    window.addEventListener('resize', positionModeMarker);
+    drawer?.addEventListener('scroll', positionModeMarker, { passive: true });
+    document.addEventListener('drawerstatechange', positionModeMarker);
+    window.setTimeout(() => modeMarker.classList.add('is-visible'), 4000);
+  }
 
   const revealTargets = [...document.querySelectorAll([
     '.section-heading',
@@ -158,47 +187,45 @@
     [...list.children].forEach((tag, index) => tag.style.setProperty('--tag-index', index));
   });
 
-  const finePointer = window.matchMedia('(pointer: fine)');
-  if (finePointer.matches) {
-    document.querySelectorAll('.feature-card, .case-card, .credential-grid article').forEach((card) => {
-      card.classList.add('tilt-reactive');
-      card.addEventListener('pointermove', (event) => {
-        if (hasReducedMotion()) return;
-        const rect = card.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - 0.5;
-        const y = (event.clientY - rect.top) / rect.height - 0.5;
-        card.style.setProperty('--tilt-x', `${x * 7}deg`);
-        card.style.setProperty('--tilt-y', `${y * -7}deg`);
+  const impactNumbers = [...document.querySelectorAll('[data-impact-count]')];
+  const impactLabel = (element, value) => `${element.dataset.prefix || ''}${value}${element.dataset.suffix || ''}`;
+  const animateImpactNumber = (element) => {
+    const target = Number(element.dataset.impactCount);
+    if (!Number.isFinite(target)) return;
+    const finalLabel = impactLabel(element, target);
+    element.setAttribute('aria-label', finalLabel);
+
+    if (hasReducedMotion()) {
+      element.textContent = finalLabel;
+      return;
+    }
+
+    const duration = 1400;
+    const startedAt = performance.now();
+    element.classList.add('is-counting');
+
+    const update = (now) => {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - ((1 - progress) ** 3);
+      element.textContent = impactLabel(element, Math.round(target * eased));
+      if (progress < 1) requestAnimationFrame(update);
+      else element.textContent = finalLabel;
+    };
+
+    requestAnimationFrame(update);
+  };
+
+  if ('IntersectionObserver' in window) {
+    const impactObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateImpactNumber(entry.target);
+        observer.unobserve(entry.target);
       });
-      card.addEventListener('pointerleave', () => {
-        card.style.removeProperty('--tilt-x');
-        card.style.removeProperty('--tilt-y');
-      });
-    });
-
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor-echo';
-    cursor.setAttribute('aria-hidden', 'true');
-    body.append(cursor);
-    let lastGhost = 0;
-
-    window.addEventListener('pointermove', (event) => {
-      if (hasReducedMotion()) return;
-      cursor.style.left = `${event.clientX}px`;
-      cursor.style.top = `${event.clientY}px`;
-      cursor.classList.toggle('is-interactive', Boolean(event.target.closest('a, button, input, textarea')));
-
-      const now = performance.now();
-      if (now - lastGhost < 65) return;
-      lastGhost = now;
-      const ghost = document.createElement('span');
-      ghost.className = 'cursor-ghost';
-      ghost.style.left = `${event.clientX}px`;
-      ghost.style.top = `${event.clientY}px`;
-      ghost.style.background = getComputedStyle(cursor).backgroundColor;
-      body.append(ghost);
-      ghost.addEventListener('animationend', () => ghost.remove(), { once: true });
-    }, { passive: true });
+    }, { threshold: 0.35 });
+    impactNumbers.forEach((element) => impactObserver.observe(element));
+  } else {
+    impactNumbers.forEach(animateImpactNumber);
   }
 
   const runModeShift = (link) => {

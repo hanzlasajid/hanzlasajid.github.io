@@ -25,12 +25,11 @@
       <span class="identity-mark">HS</span>
       <span><strong>Hanzla Sajid</strong><small>SDET / QA Engineer</small></span>
     </a>
-    <div class="mode-panel" aria-label="Choose portfolio mode">
-      <span class="eyebrow">Viewing as</span>
-      <a class="mode-link is-active" href="./" aria-current="page">SDET / QA</a>
-      <a class="mode-link" href="product/" data-mode-switch data-destination="product">Product Manager</a>
+    <div class="mode-panel" aria-label="Choose how to hire Hanzla Sajid">
+      <span class="eyebrow">Hire me as a</span>
+      <a class="mode-link mask-hover is-active" href="./" aria-current="page" data-label="SDET - Quality Engineer">SDET - Quality Engineer</a>
+      <a class="mode-link mask-hover" href="product/" data-mode-switch data-destination="product" data-label="Technical Product Manager">Technical Product Manager</a>
     </div>
-    <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false"><span>Motion</span><strong data-motion-state>Full</strong></button>
     <nav class="nav-links" aria-label="Page sections">
       <a href="#approach">Approach</a>
       <a href="#experience">Experience</a>
@@ -52,8 +51,8 @@
         <p class="hero-subline">With built-in quality.</p>
         <p>I build test strategy, automation and evidence that help teams ship with confidence—and I keep the user experience in the room while decisions are made.</p>
         <div class="hero-actions">
-          <a class="button button-dark" href="#experience">See the work</a>
-          <button class="button button-pink" type="button" data-open-contact>Start a conversation</button>
+          <a class="button button-dark mask-hover mask-hover-cta" href="#experience" data-label="See the work">See the work</a>
+          <button class="button button-red mask-hover mask-hover-cta" type="button" data-open-contact data-label="Start a conversation">Start a conversation</button>
         </div>
       </div>
       <div class="hero-visual hero-visual-quality">
@@ -68,12 +67,12 @@
       </div>
     </section>
 
-    <div class="motion-ticker" aria-label="Areas of work">
-      <div class="ticker-track">
-        <span>PLAYWRIGHT</span><i>×</i><span>TEST STRATEGY</span><i>×</i><span>USER EXPERIENCE</span><i>×</i><span>API & DATA</span><i>×</i><span>ACCESSIBILITY</span><i>×</i><span>QUALITY SIGNALS</span><i>×</i>
-        <span aria-hidden="true">PLAYWRIGHT</span><i aria-hidden="true">×</i><span aria-hidden="true">TEST STRATEGY</span><i aria-hidden="true">×</i><span aria-hidden="true">USER EXPERIENCE</span><i aria-hidden="true">×</i><span aria-hidden="true">API & DATA</span><i aria-hidden="true">×</i><span aria-hidden="true">ACCESSIBILITY</span><i aria-hidden="true">×</i><span aria-hidden="true">QUALITY SIGNALS</span><i aria-hidden="true">×</i>
-      </div>
-    </div>
+    <section class="impact-strip" aria-label="Career highlights">
+      <div><strong data-impact-count="10" data-suffix="+">10+</strong><span>Years across quality and product</span></div>
+      <div><strong data-impact-count="15" data-suffix="+">15+</strong><span>Products shipped</span></div>
+      <div><strong data-impact-count="30" data-suffix="+">30+</strong><span>Countries reached</span></div>
+      <div><strong data-impact-count="800" data-prefix="$" data-suffix="M+">$800M+</strong><span>In revenue</span></div>
+    </section>
 
     <section class="section" id="approach">
       <div class="section-heading">
@@ -86,7 +85,7 @@
           <h3>Test the risk, not the checklist.</h3>
           <p>Coverage across UI, APIs, databases, browsers, devices, performance, compliance and the full user journey.</p>
         </article>
-        <article class="feature-card fill-pink">
+        <article class="feature-card fill-amber">
           <span class="card-kicker">ENGINEERING</span>
           <h3>Make evidence repeatable.</h3>
           <p>Automation with Playwright, TypeScript and Python, supported by clear fixtures, stable selectors, CI/CD and useful diagnostics.</p>
@@ -151,9 +150,9 @@
       </div>
       <div class="band-list">
         <div><strong>Automation</strong><span>Playwright · TypeScript · Python · BDD · Cucumber</span></div>
-        <div><strong>Services & data</strong><span>Postman · API testing · SQL · Database testing</span></div>
+        <div><strong>Services &amp; data</strong><span>Postman · API testing · SQL · Database testing</span></div>
         <div><strong>Delivery</strong><span>CI/CD · GitLab · Jira · Zephyr · TestRail</span></div>
-        <div><strong>Performance & observability</strong><span>k6 · JMeter · Sentry · Kibana · Grafana · Prometheus</span></div>
+        <div><strong>Performance &amp; observability</strong><span>k6 · JMeter · Sentry · Kibana · Grafana · Prometheus</span></div>
         <div><strong>Product quality</strong><span>Usability · Accessibility · UAT · Playtesting · Cross-browser testing</span></div>
       </div>
       <div class="domain-block">
@@ -196,7 +195,7 @@
         <label>Name<input name="name" autocomplete="name" required></label>
         <label>Email<input name="email" type="email" autocomplete="email" required></label>
         <label>Message<textarea name="message" required></textarea></label>
-        <button class="button button-pink submit-button" type="submit" data-submit-label>Send message</button>
+        <button class="button button-red submit-button" type="submit" data-submit-label>Send message</button>
         <p class="form-status" data-form-status role="status" aria-live="polite"></p>
       </form>
       <div class="contact-fallbacks">
