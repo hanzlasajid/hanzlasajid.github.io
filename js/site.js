@@ -152,7 +152,7 @@
     window.addEventListener('resize', positionModeMarker);
     drawer?.addEventListener('scroll', positionModeMarker, { passive: true });
     document.addEventListener('drawerstatechange', positionModeMarker);
-    window.setTimeout(() => modeMarker.classList.add('is-visible'), 4000);
+    window.setTimeout(() => modeMarker.classList.add('is-visible'), 3000);
   }
 
   const revealTargets = [...document.querySelectorAll([
