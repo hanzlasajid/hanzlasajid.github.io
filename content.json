@@ -8,14 +8,14 @@
     {
       "id": "quality",
       "label": "SDET / QA Engineer",
-      "href": "index.html",
+      "href": "./",
       "title": "Quality, engineered from requirement to release.",
       "summary": "I build test strategy, automation and evidence that help teams ship with confidence—and I keep the user experience in the room while decisions are made."
     },
     {
       "id": "product",
       "label": "Product Manager",
-      "href": "product.html",
+      "href": "product/",
       "title": "Products shaped by evidence, users and delivery reality.",
       "summary": "I connect customer needs, product direction and engineering constraints, then turn them into clear priorities, testable outcomes and better releases."
     }

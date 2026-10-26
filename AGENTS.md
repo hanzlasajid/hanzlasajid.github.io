@@ -2,8 +2,10 @@
 
 This is a two-page, static GitHub Pages portfolio for Hanzla Sajid. It has two equal career modes:
 
-- `index.html`: SDET / QA Engineer
-- `product.html`: Product Manager
+- `/`: SDET / QA Engineer (`index.html`)
+- `/product/`: Product Manager (`product/index.html`)
+
+Public navigation must use directory URLs. Do not link to `.html` paths.
 
 Do not collapse Product Management into the QA story. Hanzla has held Product Manager titles twice alongside his quality-engineering career. Do not invent employer names, dates, metrics, or responsibilities for those two roles unless Hanzla supplies them.
 

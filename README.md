@@ -2,8 +2,8 @@
 
 A static, two-mode portfolio for Hanzla Sajid:
 
-- `index.html` presents SDET and QA engineering work.
-- `product.html` presents Product Management work.
+- `/` presents SDET and QA engineering work.
+- `/product/` presents Product Management work.
 
 The site uses plain HTML, CSS and JavaScript and is ready for GitHub Pages.
 
