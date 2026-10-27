@@ -14,7 +14,7 @@ Do not collapse Product Management into the QA story. Hanzla has held Product Ma
 - Plain HTML, one CSS file, and one small JavaScript file.
 - No framework, database, account system, analytics, or backend.
 - GitHub Pages deployment through `.github/workflows/pages.yml`.
-- Formspree handles form submissions. Until the real Formspree ID is supplied, keep `https://formspree.io/f/REPLACE_ME` and show the email and LinkedIn fallbacks.
+- Formspree handles form submissions through `https://formspree.io/f/xdeegvkn`; keep the email and LinkedIn fallbacks visible.
 
 ## Content and positioning
 

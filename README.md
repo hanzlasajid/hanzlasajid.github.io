@@ -9,7 +9,7 @@ The site uses plain HTML, CSS and JavaScript and is ready for GitHub Pages.
 
 ## Contact form
 
-Replace `https://formspree.io/f/REPLACE_ME` in both HTML files and `content.json` with the real Formspree endpoint. Until then, the form explains that it is not connected and directs visitors to `hanzla.sajid@gmx.de`.
+The contact form posts to `https://formspree.io/f/xdeegvkn`. Email and LinkedIn remain available as fallbacks.
 
 ## Local preview
 
