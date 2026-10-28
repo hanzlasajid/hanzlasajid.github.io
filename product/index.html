@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/site.css">
+  <script src="../js/analytics-config.js"></script>
   <script src="../js/site.js" defer></script>
 </head>
 <body data-mode="product">
@@ -41,6 +42,7 @@
     <div class="nav-footer">
       <a href="mailto:hanzla.sajid@gmx.de">hanzla.sajid@gmx.de</a>
       <a href="https://www.linkedin.com/in/hanzlasajid" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+      <button type="button" data-analytics-settings>Analytics choices</button>
     </div>
   </aside>
 
@@ -51,7 +53,7 @@
         <h1>Build the right product. Prove it works.</h1>
         <p>I connect customer needs, product direction and engineering constraints, then turn them into clear priorities, testable outcomes and better releases.</p>
         <div class="hero-actions">
-          <a class="button button-dark mask-hover mask-hover-cta" href="#experience" data-label="See the work">See the work</a>
+          <a class="button button-dark mask-hover mask-hover-cta" href="#experience" data-label="See the work" data-track-event="see_work_clicked">See the work</a>
           <button class="button button-blue mask-hover mask-hover-cta" type="button" data-open-contact data-label="Start a conversation">Start a conversation</button>
         </div>
       </div>
@@ -186,12 +188,24 @@
   <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">↑</button>
   <button class="contact-fab" type="button" data-open-contact><span>Talk to me</span><b aria-hidden="true">+</b></button>
 
+  <section class="analytics-consent" data-analytics-consent aria-labelledby="analytics-consent-title" hidden>
+    <div>
+      <p class="eyebrow">Privacy choice</p>
+      <h2 id="analytics-consent-title">Help improve this portfolio?</h2>
+      <p>Anonymous analytics and masked session replay show what works and where visitors get stuck. Form entries are never recorded.</p>
+    </div>
+    <div class="analytics-consent-actions">
+      <button class="button button-dark" type="button" data-analytics-allow>Allow analytics</button>
+      <button class="button button-white" type="button" data-analytics-decline>No thanks</button>
+    </div>
+  </section>
+
   <div class="modal" data-contact-modal aria-hidden="true">
     <div class="modal-overlay" data-close-contact></div>
     <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="contact-title">
       <button class="modal-close" type="button" data-close-contact aria-label="Close contact form">×</button>
       <header><p class="eyebrow">Contact</p><h2 id="contact-title">Talk to me</h2><p>Send a message, <a href="mailto:hanzla.sajid@gmx.de">email me directly</a>, or connect on <a href="https://www.linkedin.com/in/hanzlasajid" target="_blank" rel="noreferrer">LinkedIn</a>.</p></header>
-      <form action="https://formspree.io/f/xdeegvkn" method="post" data-contact-form novalidate>
+      <form class="ph-no-capture" action="https://formspree.io/f/xdeegvkn" method="post" data-contact-form novalidate>
         <label>Name<input name="name" autocomplete="name" required></label>
         <label>Email<input name="email" type="email" autocomplete="email" required></label>
         <label>Message<textarea name="message" required></textarea></label>
