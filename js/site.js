@@ -13,6 +13,7 @@
   const analyticsDecline = document.querySelector('[data-analytics-decline]');
   const analyticsSettings = [...document.querySelectorAll('[data-analytics-settings]')];
   let modalOpener = null;
+  let analyticsConsentTimer = null;
 
   const analyticsStorageKey = 'hs_analytics_consent_v1';
   const analyticsConfig = window.__PORTFOLIO_ANALYTICS__;
@@ -42,12 +43,16 @@
 
   const showAnalyticsConsent = () => {
     if (!analyticsConsent) return;
+    window.clearTimeout(analyticsConsentTimer);
+    analyticsConsentTimer = null;
     analyticsConsent.hidden = false;
     analyticsConsent.classList.add('is-visible');
   };
 
   const hideAnalyticsConsent = () => {
     if (!analyticsConsent) return;
+    window.clearTimeout(analyticsConsentTimer);
+    analyticsConsentTimer = null;
     analyticsConsent.classList.remove('is-visible');
     window.setTimeout(() => {
       if (!analyticsConsent.classList.contains('is-visible')) analyticsConsent.hidden = true;
@@ -199,10 +204,14 @@
     }
   });
 
-  analyticsSettings.forEach((button) => button.addEventListener('click', showAnalyticsConsent));
+  analyticsSettings.forEach((button) => button.addEventListener('click', () => {
+    closeDrawer(false);
+    showAnalyticsConsent();
+    analyticsAllow?.focus();
+  }));
 
   if (analyticsChoice() === 'granted') initializeAnalytics();
-  else if (!analyticsChoice()) showAnalyticsConsent();
+  else if (!analyticsChoice()) analyticsConsentTimer = window.setTimeout(showAnalyticsConsent, 3000);
 
   const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasReducedMotion = prefersReducedMotion;

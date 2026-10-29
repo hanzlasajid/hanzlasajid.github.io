@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/site.css?v=20261029-cookie">
   <script src="../js/analytics-config.js"></script>
-  <script src="../js/site.js" defer></script>
+  <script src="../js/site.js?v=20261029-cookie" defer></script>
 </head>
 <body data-mode="product">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -189,14 +189,19 @@
   <button class="contact-fab" type="button" data-open-contact><span>Talk to me</span><b aria-hidden="true">+</b></button>
 
   <section class="analytics-consent" data-analytics-consent aria-labelledby="analytics-consent-title" hidden>
-    <div>
-      <p class="eyebrow">Privacy choice</p>
-      <h2 id="analytics-consent-title">Help improve this portfolio?</h2>
-      <p>Anonymous analytics and masked session replay show what works and where visitors get stuck. Form entries are never recorded.</p>
+    <div class="analytics-consent-header">
+      <span class="analytics-consent-icon" aria-hidden="true">
+        <svg viewBox="0 0 100 100" focusable="false">
+          <path d="M84 47c-6 2-13-1-16-7-3-5-2-12 1-17-5-5-12-8-20-8-21 0-38 17-38 38s17 38 38 38 38-17 38-38c0-2 0-4-1-6h-2Z"/>
+          <circle cx="31" cy="38" r="5"/><circle cx="50" cy="28" r="4"/><circle cx="47" cy="58" r="5"/><circle cx="67" cy="66" r="4"/><circle cx="28" cy="66" r="3.5"/><circle cx="60" cy="44" r="3"/>
+        </svg>
+      </span>
+      <h2 id="analytics-consent-title">cookie?</h2>
     </div>
+    <p class="analytics-consent-copy">We use cookies to make your experience on this website better.</p>
     <div class="analytics-consent-actions">
-      <button class="button button-dark" type="button" data-analytics-allow>Allow analytics</button>
-      <button class="button button-white" type="button" data-analytics-decline>No thanks</button>
+      <button class="button button-dark" type="button" data-analytics-allow>Yes please!</button>
+      <button class="button button-dark" type="button" data-analytics-decline>No... I'm full</button>
     </div>
   </section>
 
