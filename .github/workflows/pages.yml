@@ -23,6 +23,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Prepare deployment artifact
+        run: |
+          mkdir _site
+          git archive HEAD | tar -x -C _site
       - name: Configure privacy-first analytics
         env:
           PORTFOLIO_POSTHOG_TOKEN: ${{ vars.POSTHOG_PROJECT_TOKEN }}
@@ -30,10 +34,10 @@ jobs:
         run: |
           test -n "$PORTFOLIO_POSTHOG_TOKEN"
           test -n "$PORTFOLIO_POSTHOG_HOST"
-          printf 'window.__PORTFOLIO_ANALYTICS__ = {"token":"%s","host":"%s"};\n' "$PORTFOLIO_POSTHOG_TOKEN" "$PORTFOLIO_POSTHOG_HOST" > js/analytics-config.js
+          printf 'window.__PORTFOLIO_ANALYTICS__ = {"token":"%s","host":"%s"};\n' "$PORTFOLIO_POSTHOG_TOKEN" "$PORTFOLIO_POSTHOG_HOST" > _site/js/analytics-config.js
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
