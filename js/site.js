@@ -370,9 +370,9 @@
     '.feature-card',
     '.brand-showcase',
     '.brand-tile',
-    '.case-card',
     '.band-list > div',
     '.domain-block',
+    '.toolkit-group',
     '.credential-grid article',
     '.switch-banner > *'
   ].join(','))];
@@ -394,10 +394,6 @@
   } else {
     revealTargets.forEach((element) => element.classList.add('is-revealed'));
   }
-
-  document.querySelectorAll('.case-card .tag-list').forEach((list) => {
-    [...list.children].forEach((tag, index) => tag.style.setProperty('--tag-index', index));
-  });
 
   const impactNumbers = [...document.querySelectorAll('[data-impact-count]')];
   const impactLabel = (element, value) => `${element.dataset.prefix || ''}${value}${element.dataset.suffix || ''}`;
@@ -449,7 +445,7 @@
     stage.style.setProperty('--shift-direction', direction);
     stage.setAttribute('aria-hidden', 'true');
 
-    const blockColors = ['#1a1a1a', '#7f1d1d', '#b91c1c', '#f59e0b', '#eab308', '#ffd600', '#00c853'];
+    const blockColors = ['#1a1a1a', '#7f1d1d', '#b91c1c', '#f59e0b', '#eab308', '#00c853'];
     for (let index = 0; index < 12; index += 1) {
       const block = document.createElement('div');
       block.className = 'shift-block';
