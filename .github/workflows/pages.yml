@@ -27,6 +27,7 @@ jobs:
         run: |
           mkdir _site
           git archive HEAD | tar -x -C _site
+          rm _site/.gitignore
       - name: Configure privacy-first analytics
         env:
           PORTFOLIO_POSTHOG_TOKEN: ${{ vars.POSTHOG_PROJECT_TOKEN }}
