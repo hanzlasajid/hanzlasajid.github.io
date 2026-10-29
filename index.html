@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=20261029-cookie">
+  <link rel="stylesheet" href="css/site.css?v=20261029-brand-grid3">
   <script src="js/analytics-config.js"></script>
-  <script src="js/site.js?v=20261029-cookie" defer></script>
+  <script src="js/site.js?v=20261029-brands" defer></script>
 </head>
 <body data-mode="quality">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -33,8 +33,8 @@
       <a class="mode-link mask-hover" href="product/" data-mode-switch data-destination="product" data-label="I'm hiring for a Product Manager">I'm hiring for a Product Manager</a>
     </div>
     <nav class="nav-links" aria-label="Page sections">
-      <a href="#approach">Approach</a>
       <a href="#experience">Experience</a>
+      <a href="#approach">Approach</a>
       <a href="#toolkit">Toolkit</a>
       <a href="#credentials">Credentials</a>
       <button type="button" data-open-contact>Talk to me</button>
@@ -77,34 +77,55 @@
       <div><strong data-impact-count="800" data-prefix="$" data-suffix="M+">$800M+</strong><span>In revenue</span></div>
     </section>
 
-    <section class="section" id="approach">
-      <div class="section-heading">
-        <span class="section-number">01</span>
-        <div><p class="eyebrow">My approach</p><h2>Quality is a product signal.</h2></div>
-      </div>
-      <div class="card-grid card-grid-3">
-        <article class="feature-card fill-green">
-          <span class="card-kicker">STRATEGY</span>
-          <h3>Test the risk, not the checklist.</h3>
-          <p>Coverage across UI, APIs, databases, browsers, devices, performance, compliance and the full user journey.</p>
-        </article>
-        <article class="feature-card fill-amber">
-          <span class="card-kicker">ENGINEERING</span>
-          <h3>Make evidence repeatable.</h3>
-          <p>Automation with Playwright, TypeScript and Python, supported by clear fixtures, stable selectors, CI/CD and useful diagnostics.</p>
-        </article>
-        <article class="feature-card fill-blue">
-          <span class="card-kicker">EXPERIENCE</span>
-          <h3>Protect what users feel.</h3>
-          <p>Usability, accessibility, compatibility and playtesting turn technical quality into a better product experience.</p>
-        </article>
-      </div>
-    </section>
-
     <section class="section section-dark" id="experience">
       <div class="section-heading">
-        <span class="section-number">02</span>
-        <div><p class="eyebrow">Selected experience</p><h2>Products tested in the real world.</h2></div>
+        <span class="section-number">01</span>
+        <div><h2>Products tested in the real world.</h2></div>
+      </div>
+      <div class="brand-showcase" aria-labelledby="quality-brand-showcase-title">
+        <header class="brand-showcase-head">
+          <div>
+            <h3 id="quality-brand-showcase-title">Brands and teams I’ve worked with.</h3>
+          </div>
+        </header>
+        <ul class="brand-grid brand-grid-featured" aria-label="Featured brands">
+          <li class="brand-tile brand-tile-audi">
+            <span class="brand-tile-label">Automotive</span>
+            <span class="brand-logo brand-logo-audi" aria-label="Audi">
+              <svg viewBox="0 0 284 86" role="img" aria-hidden="true">
+                <circle cx="52" cy="43" r="34"></circle><circle cx="112" cy="43" r="34"></circle><circle cx="172" cy="43" r="34"></circle><circle cx="232" cy="43" r="34"></circle>
+              </svg>
+              <strong>AUDI</strong>
+            </span>
+          </li>
+          <li class="brand-tile brand-tile-sap">
+            <span class="brand-tile-label">Enterprise</span>
+            <span class="brand-logo brand-logo-sap" aria-label="SAP">
+              <svg viewBox="0 0 270 128" role="img" aria-hidden="true">
+                <path d="M8 10h250l-72 108H8z"></path>
+                <text x="42" y="91">SAP</text>
+              </svg>
+            </span>
+          </li>
+          <li class="brand-tile brand-tile-nfl">
+            <span class="brand-tile-label">Fan Engagement</span>
+            <span class="brand-logo brand-logo-nfl"><img src="assets/brands/nfl.png" alt="NFL"></span>
+          </li>
+          <li class="brand-tile brand-tile-ministry">
+            <span class="brand-tile-label">Tourism</span>
+            <span class="brand-logo brand-logo-ministry" aria-label="Ministry of Tourism, Saudi Arabia">
+              <img src="assets/brands/ministry-tourism-sa.svg" alt="Ministry of Tourism">
+              <small>Saudi Arabia</small>
+            </span>
+          </li>
+        </ul>
+        <ul class="brand-grid brand-grid-supporting" aria-label="Additional companies and studios">
+          <li class="brand-tile brand-tile-fort-worth"><span class="brand-tile-label">Destination</span><span class="brand-logo brand-logo-fort-worth" aria-label="Visit Fort Worth"><svg viewBox="0 0 70 70" role="img" aria-hidden="true"><path d="M35 4l8 20h22L47 37l7 23-19-14-19 14 7-23L5 24h22z"></path></svg><span><small>VISIT</small><strong>FORT WORTH TEXAS</strong></span></span></li>
+          <li class="brand-tile brand-tile-holoride"><span class="brand-tile-label">Virtual Reality</span><span class="brand-logo brand-logo-asset"><img src="assets/brands/holoride.svg" alt="holoride"></span></li>
+          <li class="brand-tile brand-tile-define"><span class="brand-tile-label">AI-Fitness</span><span class="brand-logo brand-logo-asset"><img src="assets/brands/define-fit.svg" alt="Define Fit"><strong class="brand-name">Define Fit</strong></span></li>
+          <li class="brand-tile brand-tile-vulcan"><span class="brand-tile-label">Gaming</span><span class="brand-logo brand-lockup" role="img" aria-label="Vulcan Forged"><svg class="brand-symbol-vulcan" viewBox="0 0 120 76" aria-hidden="true"><path d="M10 13h27l23 38L83 13h27L60 68z"></path><path d="M37 13h23l12 20-12 18z"></path></svg><strong>Vulcan Forged</strong></span></li>
+          <li class="brand-tile brand-tile-holi"><span class="brand-tile-label">Social Networking</span><span class="brand-logo brand-logo-asset"><img src="assets/brands/holi.png" alt="holi.social"></span></li>
+        </ul>
       </div>
       <div class="case-grid">
         <article class="case-card">
@@ -142,6 +163,30 @@
             <ul class="tag-list"><li>API</li><li>Database</li><li>Cross-browser</li><li>UAT</li></ul>
           </div>
           <footer>Games · NFT marketplace · DEX · dApps</footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="section-heading">
+        <span class="section-number">02</span>
+        <div><p class="eyebrow">My approach</p><h2>Quality is a product signal.</h2></div>
+      </div>
+      <div class="card-grid card-grid-3">
+        <article class="feature-card fill-green">
+          <span class="card-kicker">STRATEGY</span>
+          <h3>Test the risk, not the checklist.</h3>
+          <p>Coverage across UI, APIs, databases, browsers, devices, performance, compliance and the full user journey.</p>
+        </article>
+        <article class="feature-card fill-amber">
+          <span class="card-kicker">ENGINEERING</span>
+          <h3>Make evidence repeatable.</h3>
+          <p>Automation with Playwright, TypeScript and Python, supported by clear fixtures, stable selectors, CI/CD and useful diagnostics.</p>
+        </article>
+        <article class="feature-card fill-blue">
+          <span class="card-kicker">EXPERIENCE</span>
+          <h3>Protect what users feel.</h3>
+          <p>Usability, accessibility, compatibility and playtesting turn technical quality into a better product experience.</p>
         </article>
       </div>
     </section>

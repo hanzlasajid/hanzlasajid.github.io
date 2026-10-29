@@ -136,6 +136,61 @@ body[data-mode="quality"] .button-red.mask-hover { --mask-surface: var(--blue); 
 .fill-yellow { background: var(--yellow); }
 .fill-dark { color: #fff; background: var(--dark); }
 
+.brand-showcase { margin: 0 0 64px; padding: 28px; color: var(--ink); background: var(--yellow); border: 4px solid #000; box-shadow: 10px 10px 0 var(--blue); }
+.brand-showcase-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+.brand-showcase-head .eyebrow { margin: 0 0 6px; }
+.brand-showcase-head h3 { max-width: 680px; margin: 0; font-size: clamp(30px, 3.5vw, 52px); line-height: .98; letter-spacing: -.04em; text-transform: uppercase; }
+.brand-showcase-note { max-width: 260px; margin: 0; padding: 9px 11px; color: #fff; background: var(--dark); border: 3px solid #000; box-shadow: 4px 4px 0 var(--green); font: 700 10px "Space Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
+.brand-grid { display: grid; margin: 0; padding: 0; list-style: none; }
+.brand-grid-featured { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.brand-grid-supporting { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.brand-tile { position: relative; min-width: 0; display: grid; place-items: center; overflow: hidden; background: #fff; border: 3px solid #000; box-shadow: 5px 5px 0 #000; transition: transform .18s ease, box-shadow .18s ease; isolation: isolate; }
+.brand-grid-featured .brand-tile { min-height: 190px; padding: 34px 18px 24px; }
+.brand-grid-supporting .brand-tile { min-height: 126px; padding: 34px 12px 14px; }
+.brand-tile:hover { z-index: 3; transform: translate(-4px, -4px) rotate(-1deg); box-shadow: 9px 9px 0 #000; }
+.brand-tile:nth-child(even):hover { transform: translate(-4px, -4px) rotate(1deg); }
+.brand-tile-label { position: absolute; top: 0; left: 0; z-index: 2; max-width: 100%; padding: 5px 8px; color: #fff; background: var(--dark); border: 0 solid #000; border-right-width: 2px; border-bottom-width: 2px; font: 700 9px "Space Mono", monospace; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.brand-logo { width: 100%; display: flex; align-items: center; justify-content: center; color: inherit; }
+.brand-logo svg { display: block; overflow: visible; }
+.brand-logo strong, .brand-logo b, .brand-logo small { display: block; }
+.brand-logo strong { line-height: .95; }
+.brand-logo b, .brand-logo small { font-family: "Space Mono", monospace; line-height: 1.1; }
+.brand-logo-audi { flex-direction: column; gap: 10px; }
+.brand-logo-audi svg { width: min(100%, 210px); fill: none; stroke: currentColor; stroke-width: 6; }
+.brand-logo-audi strong { font-size: 22px; letter-spacing: .28em; }
+.brand-tile-sap { color: #fff; background: var(--blue); }
+.brand-logo-sap svg { width: min(100%, 190px); }
+.brand-logo-sap path { fill: #fff; stroke: #000; stroke-width: 4; }
+.brand-logo-sap text { fill: #000; font: 700 72px "Space Grotesk", sans-serif; letter-spacing: -7px; }
+.brand-tile-nfl { background: #fff; }
+.brand-logo-nfl img { width: min(100%, 116px); height: auto; display: block; }
+.brand-tile-ministry { color: #fff; background: var(--green); }
+.brand-logo-ministry { flex-direction: column; gap: 10px; }
+.brand-logo-ministry img { width: min(100%, 178px); height: auto; display: block; }
+.brand-logo-ministry small { font-size: 8px; letter-spacing: .22em; text-transform: uppercase; }
+.brand-tile-fort-worth { background: #fff; }
+.brand-logo-fort-worth { gap: 4px; justify-content: center; }
+.brand-logo-fort-worth svg { width: 30px; flex: 0 0 30px; fill: var(--blue); stroke: #000; stroke-width: 3; stroke-linejoin: bevel; }
+.brand-logo-fort-worth small { font-size: 8px; letter-spacing: .2em; }
+.brand-logo-fort-worth strong { font-size: 10.5px; letter-spacing: -.06em; word-spacing: .12em; white-space: nowrap; }
+.brand-logo-asset { height: 76px; flex-direction: column; gap: 7px; }
+.brand-logo-asset img { max-width: 100%; max-height: 64px; display: block; object-fit: contain; }
+.brand-tile-holoride .brand-logo-asset img { width: min(100%, 148px); }
+.brand-logo-symbol { height: 76px; }
+.brand-logo-symbol svg { width: 104px; height: 68px; }
+.brand-lockup { min-height: 80px; flex-direction: column; gap: 4px; }
+.brand-lockup svg { width: 70px; height: 44px; flex: 0 0 auto; }
+.brand-lockup strong { font: 700 10.5px/1.05 "Space Mono", monospace; letter-spacing: -.045em; text-align: center; text-transform: uppercase; }
+.brand-lockup strong span { display: block; }
+.brand-tile-define { color: #fff; background: var(--blue); }
+.brand-tile-define .brand-logo-asset img { width: 65px; height: 46px; }
+.brand-tile-vulcan { color: #fff; background: var(--dark); }
+.brand-tile-vulcan .brand-lockup strong { color: var(--yellow); letter-spacing: .02em; }
+.brand-symbol-vulcan path:first-child { fill: var(--amber); stroke: #000; stroke-width: 5; stroke-linejoin: bevel; }
+.brand-symbol-vulcan path:last-child { fill: var(--blue); stroke: #000; stroke-width: 5; stroke-linejoin: bevel; }
+.brand-tile-holi { background: #ffff7d; }
+.brand-tile-holi .brand-logo-asset img { width: 70px; height: 70px; }
+
 .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
 .case-card { display: flex; flex-direction: column; min-height: 460px; color: var(--ink); background: #fff; border: 4px solid #000; box-shadow: 8px 8px 0 var(--yellow); transition: transform .16s ease, box-shadow .16s ease; }
 .case-card:hover { transform: translate(-2px, -2px); box-shadow: 11px 11px 0 var(--yellow); }
@@ -318,6 +373,8 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 80; pointer-even
   .impact-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .impact-strip > div:nth-child(2) { border-right: 0; }
   .impact-strip > div:nth-child(-n + 2) { border-bottom: 3px solid #000; }
+  .brand-grid-featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .brand-grid-supporting { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 768px) {
@@ -343,6 +400,14 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 80; pointer-even
   .section-number { width: 44px; height: 40px; }
   .section-heading h2, .switch-banner h2 { font-size: clamp(34px, 11vw, 56px); }
   .card-grid-3, .case-grid, .credential-grid { grid-template-columns: 1fr; }
+  .brand-showcase { margin-bottom: 52px; padding: 18px; box-shadow: 7px 7px 0 var(--blue); }
+  .brand-showcase-head { display: grid; align-items: start; margin-bottom: 20px; }
+  .brand-showcase-note { max-width: none; }
+  .brand-grid-featured, .brand-grid-supporting { grid-template-columns: 1fr; }
+  .brand-grid-featured .brand-tile { min-height: 160px; }
+  .brand-grid-supporting .brand-tile { min-height: 96px; }
+  .brand-logo-ministry, .brand-logo-fort-worth { justify-content: center; }
+  .brand-grid-supporting .brand-logo { width: min(100%, 250px); }
   .impact-strip > div { min-height: 112px; }
   .feature-card { min-height: 270px; }
   .switch-banner { padding: 62px 20px; }
@@ -365,7 +430,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 80; pointer-even
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
-  .feature-card, .feature-card:nth-child(2), .feature-card:nth-child(3), .position-card, .feature-card:hover, .mode-link:hover, .button:hover, .case-card:hover, .contact-fab:hover, .back-to-top:hover { transform: none; }
+  .feature-card, .feature-card:nth-child(2), .feature-card:nth-child(3), .position-card, .feature-card:hover, .mode-link:hover, .button:hover, .brand-tile:hover, .case-card:hover, .contact-fab:hover, .back-to-top:hover { transform: none; }
   .hero-copy, .hero-badge, .hero h1, .hero-copy > p, .hero-actions, .hero-visual, .hero-visual::before, .hero-visual::after, .hero-portrait::after, .position-card, .hero::after, .contact-fab b, .contact-fab::after { animation: none; }
   .reveal-item { opacity: 1; transform: none; }
   .shift-stage { display: none; }

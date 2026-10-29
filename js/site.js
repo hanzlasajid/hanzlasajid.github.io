@@ -368,6 +368,8 @@
   const revealTargets = [...document.querySelectorAll([
     '.section-heading',
     '.feature-card',
+    '.brand-showcase',
+    '.brand-tile',
     '.case-card',
     '.band-list > div',
     '.domain-block',
